@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class MatchManager {
 
     private static MatchManager _instance;
@@ -7,6 +9,7 @@ public class MatchManager {
     private int _playCount;
     private MatchFactory _matchFactory;
     private boolean _tie;
+    private HashMap scores;
 
 
 
@@ -41,12 +44,8 @@ public class MatchManager {
         }else{
             _matchFactory.setMatchInfo(new GwangMatchInfo());
         }
-        _matchFactory.getMatchInfo();
 
-
-    }
-    public void givePrize(Player firstPlayer, Player secondPlayer){
-
+        scores = _matchFactory.getMatchInfo();
     }
 
 }
