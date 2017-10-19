@@ -14,7 +14,9 @@ public class MatchManager {
     private Player _winner;
     private Player _looser;
 
-
+    public int getCashPrize(){
+        return _cashPrize;
+    }
     public Player getWinner(){
        return _winner;
     }
@@ -53,7 +55,7 @@ public class MatchManager {
     }
 
     public boolean isAffordable(Player firstPlayer, Player secondPlayer){
-        if(firstPlayer.getMoney() > _cashPrize && secondPlayer.getMoney() > _cashPrize)
+        if(firstPlayer.getMoney() >= _cashPrize && secondPlayer.getMoney() >= _cashPrize)
             return true;
         else
             return false;
