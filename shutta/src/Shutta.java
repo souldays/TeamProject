@@ -35,13 +35,15 @@ public class Shutta {
             System.out.println( player1.getName()+"의 패 : "+matchManager.getPlayerPae(player1));
             System.out.println(player2.getName()+"의 패 : "+matchManager.getPlayerPae(player2));
 
-            System.out.println("1p 승리"); //2
-            player1.getRecord().addWinCount();
-            player2.getRecord().addLoseCount();
+            if(!matchManager.isTie()) {
+                System.out.println(matchManager.getWinner().getName()+" 승리"); //2
+                matchManager.getWinner().getRecord().addWinCount();
+                matchManager.getLooser().getRecord().addLoseCount();
+                System.out.println("돈 지급");
+                dealer.giveMoney(matchManager.getWinner());
+                System.out.println("1p : " + player1.getMoney() + "  2p : " + player2.getMoney());
+            }
 
-            System.out.println("돈 지급");
-            dealer.giveMoney(player1);
-            System.out.println(player1.getName()+" : " + player1.getMoney() +"   "+ player2.getName()+" : " + player2.getMoney());
 
             System.out.println("다음 게임 여부 확인"); //3
             System.out.println("-----------------------------------------\n\n");

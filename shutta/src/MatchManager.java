@@ -11,8 +11,16 @@ public class MatchManager {
     private boolean _tie;
     private HashMap scores;
     private Jocbo firstPae, secondPae;
+    private Player _winner;
+    private Player _looser;
 
 
+    public Player getWinner(){
+       return _winner;
+    }
+    public Player getLooser(){
+        return _looser;
+    }
     public boolean getGameOver(){
         return _gameOver;
     }
@@ -20,12 +28,17 @@ public class MatchManager {
         if (_gameOver != gameOver)
             _gameOver = gameOver;
     }
+    public boolean isTie(){
+        return _tie;
+    }
 
     private MatchManager(int cashPrize){
         _cashPrize = cashPrize;
         _gameOver = false;
         _tie = false;
         _playCount = 0;
+         _winner = null;
+         _looser = null;
         _matchFactory = MatchFactory.getInstance();
     }
 
@@ -40,10 +53,16 @@ public class MatchManager {
 
     public void setDoubleCashPrize(){
            _cashPrize *= 2;
+           _winner = null;
+           _tie = false;
+        _looser = null;
     }
 
     public void resetCashPrize(int cashPrize){
         _cashPrize = cashPrize;
+        _winner = null;
+        _tie = false;
+        _looser = null;
     }
 
     public void determineWinner(Player firstPlayer, Player secondPlayer){
@@ -56,7 +75,23 @@ public class MatchManager {
         scores = _matchFactory.getMatchInfo();
         firstPae = getPlayerPae(firstPlayer);
         secondPae = getPlayerPae(secondPlayer);
-        
+
+        int firstScore = (int)scores.get(firstPae);
+        int secondScore = (int)scores.get(secondPae);
+
+        if(firstScore > secondScore) {
+            _winner = firstPlayer;
+            _looser = secondPlayer;
+        }else if(secondScore > firstScore) {
+            _winner = secondPlayer;
+            _looser = firstPlayer;
+        }else {
+            _winner = null;
+            _looser = null;
+            _tie = true;
+        }
+
+
     }
     public Jocbo getPlayerPae(Player player){
 
