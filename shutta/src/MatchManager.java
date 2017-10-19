@@ -47,5 +47,5 @@ public class MatchManager {
 
         scores = _matchFactory.getMatchInfo();
     }
-
+  
 }
