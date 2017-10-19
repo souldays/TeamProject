@@ -3,12 +3,23 @@
      private Card _card1;
      private Card _card2;
      private Record _record;
+     private String _name;
 
-     Player(){
+     Player(String name){
          _money=1000;
          _record = new Record();
+         _name=name;
      }
+    //region
 
+    public String getName(){
+        return _name;
+    }
+    public void setName(String name){
+        if (_name != name)
+            _name = name;
+    }
+    //endregion
      //region
      public Record getRecord(){
          return _record;
