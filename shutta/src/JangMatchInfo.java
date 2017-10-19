@@ -17,11 +17,11 @@ public class JangMatchInfo implements Matchable {
             scores.put(jocbo, i--);
         }
 
-        int temp = scores.get(Jocbo.SAM_PAL_GWANG_DDANG);
-        scores.put(Jocbo.SAM_PAL_GWANG_DDANG, scores.get(Jocbo.IL_PAL_GWANG_DDANG));
-        scores.put(Jocbo.IL_PAL_GWANG_DDANG, scores.get(Jocbo.IL_SAM_GWANG_DDANG));
-        scores.put(Jocbo.IL_SAM_GWANG_DDANG, scores.get(Jocbo.JANG_DDANG));
-        scores.put(Jocbo.JANG_DDANG, temp);
+        int temp = scores.get(Jocbo.삼팔광땡);
+        scores.put(Jocbo.삼팔광땡, scores.get(Jocbo.일팔광땡));
+        scores.put(Jocbo.일팔광땡, scores.get(Jocbo.일삼광땡));
+        scores.put(Jocbo.일삼광땡, scores.get(Jocbo.장땡));
+        scores.put(Jocbo.장땡, temp);
 
         return scores;
     }

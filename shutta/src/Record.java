@@ -3,6 +3,7 @@ public class Record {
     private int _winCount;
     private int _drawCount;
     private int _loseCount;
+    private double _PoV;
 
     public Record(){
         _winCount =0;
@@ -10,6 +11,18 @@ public class Record {
         _drawCount =0;
         _totalCount=0;
     }
+
+    //region
+    public double getPoV(   ){
+        _PoV=(_winCount/_totalCount)*100;
+        return _PoV;
+    }
+    public void setPoV(double PoV){
+        if (_PoV != PoV)
+            _PoV = PoV;
+    }
+    //endregion
+
     //region
     public int getTotalCount(){
         return _totalCount;
