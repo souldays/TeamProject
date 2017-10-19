@@ -21,13 +21,14 @@ public class MatchManager {
     public Player getLooser(){
         return _looser;
     }
-    public boolean getGameOver(){
+    public boolean isGameOver(){
         return _gameOver;
     }
     public void setGameOver(boolean gameOver){
         if (_gameOver != gameOver)
             _gameOver = gameOver;
     }
+
     public boolean isTie(){
         return _tie;
     }
@@ -49,6 +50,13 @@ public class MatchManager {
     public static MatchManager getInstance()
     {
         return _instance;
+    }
+
+    public boolean isAffordable(Player firstPlayer, Player secondPlayer){
+        if(firstPlayer.getMoney() > _cashPrize && secondPlayer.getMoney() > _cashPrize)
+            return true;
+        else
+            return false;
     }
 
     public void setDoubleCashPrize(){
@@ -90,9 +98,8 @@ public class MatchManager {
             _looser = null;
             _tie = true;
         }
-
-
     }
+
     public Jocbo getPlayerPae(Player player){
 
         if(player.getCard1().getGwang() && player.getCard2().getGwang()) {

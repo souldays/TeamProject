@@ -14,7 +14,7 @@ public class Record {
 
     //region
     public double getPoV(   ){
-        _PoV=(_winCount/_totalCount)*100;
+        _PoV= (double) _winCount/_totalCount * 100;
         return _PoV;
     }
     public void setPoV(double PoV){

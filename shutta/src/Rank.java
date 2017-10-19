@@ -6,6 +6,7 @@ public class Rank {
         System.out.println(p1.getRecord().getWinCount()+"번 승리");
         System.out.println(p1.getRecord().getDrawCount()+"번 무승부");
         System.out.println(p1.getRecord().getLoseCount()+"번 패배");
+        System.out.println();
 
         System.out.println(p2.getName()+" : "+p2.getMoney());
         System.out.println(p2.getName()+" 승률 : "+(p2.getRecord().getPoV())+"%");

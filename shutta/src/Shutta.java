@@ -15,37 +15,65 @@ public class Shutta {
         Dealer dealer = Dealer.getDealer();
         MatchManager matchManager = MatchManager.getInstance();
 
-        while (player1.getMoney() > 0 && player2.getMoney() > 0) {
+        while (!matchManager.isGameOver()) {
 
             System.out.println("-----------------------------------------");
             System.out.println(player1.getRecord().getTotalCount() + 1 + "번째 게임");
+
             System.out.println("돈 배팅");
             dealer.getMoney(player1, player2, 100);
-            System.out.println(player1.getName()+" : " + player1.getMoney() + player2.getName()+" : " + player2.getMoney());
+            System.out.println(player1.getName()+" : " + player1.getMoney() +" "+ player2.getName()+" : " + player2.getMoney());
             System.out.println("판돈 : " + dealer.getBattedMoney());
 
             System.out.println("패를 나눠줌");
             dealer.giveCard(player1, player2);
-            System.out.print("패1 : " + player1.getCard1().getNum() + "   " + player1.getCard1().getGwang());
-            System.out.println("   패2 : " + player1.getCard2().getNum() + "   " + player1.getCard2().getGwang());
-            System.out.print("패1 : " + player2.getCard1().getNum() + "   " + player2.getCard1().getGwang());
-            System.out.println("   패2 : " + player2.getCard2().getNum() + "   " + player2.getCard2().getGwang());
+            System.out.print(player1.getName()+"의 " + "첫 번째 패 : " + player1.getCard1().getNum());
+            if(player1.getCard1().getGwang())
+                System.out.println("광");
+            else
+                System.out.println();
+            System.out.print(player1.getName()+"의 " + "두 번째 패 : " + player1.getCard2().getNum());
+            if(player1.getCard2().getGwang())
+                System.out.println("광");
+            else
+                System.out.println();
+            System.out.print(player2.getName()+"의 " + "첫 번째 패 : " + player2.getCard1().getNum());
+            if(player2.getCard1().getGwang())
+                System.out.println("광");
+            else
+                System.out.println();
+            System.out.print(player2.getName()+"의 " + "두 번째 패 : " + player2.getCard2().getNum());
+            if(player2.getCard2().getGwang())
+                System.out.println("광");
+            else
+                System.out.println();
 
-            System.out.println("패확인 ");
-            System.out.println( player1.getName()+"의 패 : "+matchManager.getPlayerPae(player1));
-            System.out.println(player2.getName()+"의 패 : "+matchManager.getPlayerPae(player2));
+            System.out.println("족보 확인 ");
+            System.out.println( player1.getName()+"의 족보 : "+matchManager.getPlayerPae(player1));
+            System.out.println(player2.getName()+"의 족보 : "+matchManager.getPlayerPae(player2));
 
+            matchManager.determineWinner(player1, player2);
             if(!matchManager.isTie()) {
                 System.out.println(matchManager.getWinner().getName()+" 승리"); //2
                 matchManager.getWinner().getRecord().addWinCount();
                 matchManager.getLooser().getRecord().addLoseCount();
                 System.out.println("돈 지급");
                 dealer.giveMoney(matchManager.getWinner());
-                System.out.println("1p : " + player1.getMoney() + "  2p : " + player2.getMoney());
+                System.out.println( player1.getName() + " : " + player1.getMoney() + " " + player2.getName() + "  : " + player2.getMoney());
+                matchManager.resetCashPrize(100);
+            }else {
+                player1.getRecord().addDrawCount();
+                player2.getRecord().addDrawCount();
+                matchManager.setDoubleCashPrize();
             }
 
 
+
             System.out.println("다음 게임 여부 확인"); //3
+            if(matchManager.isAffordable(player1,player2))
+                matchManager.setGameOver(false);
+            else
+                matchManager.setGameOver(true);
             System.out.println("-----------------------------------------\n\n");
 
         }
