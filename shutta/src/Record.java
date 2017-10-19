@@ -4,7 +4,7 @@ public class Record {
     private int _drawCount;
     private int _loseCount;
 
-    Record(){
+    public Record(){
         _winCount =0;
         _loseCount =0;
         _drawCount =0;

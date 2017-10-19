@@ -6,7 +6,7 @@
 
      Player(){
          _money=1000;
-         _record=new Record();
+         _record = new Record();
      }
 
      //region
