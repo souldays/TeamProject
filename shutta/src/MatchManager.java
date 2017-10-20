@@ -6,7 +6,6 @@ public class MatchManager {
 
     private int _cashPrize;
     private boolean _gameOver;
-    private int _playCount;
     private MatchFactory _matchFactory;
     private boolean _tie;
     private HashMap scores;
@@ -42,7 +41,6 @@ public class MatchManager {
         _cashPrize = cashPrize;
         _gameOver = false;
         _tie = false;
-        _playCount = 0;
          _winner = null;
          _looser = null;
         _matchFactory = MatchFactory.getInstance();

@@ -1,8 +1,8 @@
- class Card {
-     private int _num;
-     private boolean _gwang;
+ class Card {   // 카드 한장의 정보를 담은 클래스
+     private int _num;   // 카드의 월
+     private boolean _gwang; // 광 여부
 
-    Card(int num,boolean gwang){
+    Card(int num,boolean gwang){  //생성자
         _num=num;
         _gwang=gwang;
     }

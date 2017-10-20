@@ -1,11 +1,11 @@
-public class Record {
+public class Record {   // 사용자의 전적 내용을 담는 클래스
     private int _totalCount;
     private int _winCount;
     private int _drawCount;
     private int _loseCount;
-    private double _PoV;
+    private double _PoV;  // 승률
 
-    public Record(){
+    public Record(){  // 생성자    객체 생성시 모든 값이 0으로 초기화됨
         _winCount =0;
         _loseCount =0;
         _drawCount =0;
@@ -61,7 +61,7 @@ public class Record {
     }
     //endregion
 
-    public void addWinCount(){
+    public void addWinCount(){    // 승무패가 갈리고 해당 결과의 카운트를 올려주는 메소드
         _winCount++;
         _totalCount++;
     }

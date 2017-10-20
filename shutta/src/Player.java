@@ -2,10 +2,10 @@
      private int _money;
      private Card _card1;
      private Card _card2;
-     private Record _record;
+     private Record _record;  //전적 정보를 담고있는데 레코드 객체
      private String _name;
 
-     Player(String name){
+     Player(String name){   //생성자    이름을 받아서 객체를 생성하면 돈 1000원 레코드, 받아온 이름으로 초기화됨
          _money=1000;
          _record = new Record();
          _name=name;
