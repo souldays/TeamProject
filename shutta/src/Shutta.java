@@ -23,7 +23,7 @@ public class Shutta {
             System.out.println("@돈 배팅");
             dealer.getMoney(player1, player2, 100);
             System.out.println(player1.getName()+" : " + player1.getMoney() +" "+ player2.getName()+" : " + player2.getMoney());
-            System.out.println("*판돈* : " + dealer.getBattedMoney());
+            System.out.println("*판돈* : " + matchManager.getCashPrize());
             System.out.println();
 
             System.out.println("@패를 나눠줌");
@@ -61,7 +61,7 @@ public class Shutta {
                 System.out.println(matchManager.getWinner().getName()+" 승리"); //2
                 matchManager.getWinner().getRecord().addWinCount();
                 matchManager.getLooser().getRecord().addLoseCount();
-                System.out.println("@돈 지급");
+                System.out.println("\n@돈 지급");
                 System.out.println(matchManager.getWinner().getName()+" + " + matchManager.getCashPrize());
                 System.out.println(matchManager.getLooser().getName()+" - " + matchManager.getCashPrize());
                 dealer.giveMoney(matchManager.getWinner());
@@ -70,10 +70,13 @@ public class Shutta {
                 System.out.println("무승부");
                 player1.getRecord().addDrawCount();
                 player2.getRecord().addDrawCount();
+                dealer.payBackMoney(player1,player2);
                 matchManager.setDoubleCashPrize();
+               // dealer.drawMoney(matchManager.getCashPrize());
+
             }
 
-            System.out.println("*잔액*");
+            System.out.println("\n*잔액*");
             System.out.println(player1.getName()+" : " + player1.getMoney());
             System.out.println(player2.getName()+" : " + player2.getMoney());
             System.out.println("*판돈* : " + matchManager.getCashPrize());

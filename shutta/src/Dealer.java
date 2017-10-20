@@ -63,7 +63,10 @@ class Dealer {
         p2.setCard2(cards.get(randomNum[3]));
 
     }
-
+    void payBackMoney(Player p1,Player p2){
+        p1.setMoney(p1.getMoney()+_bettedMoney/2);
+        p2.setMoney(p2.getMoney()+_bettedMoney/2);
+    }
     void getMoney(Player p1, Player p2, int bettingMoney) {
         p1.setMoney(p1.getMoney() - bettingMoney);
         p2.setMoney(p2.getMoney() - bettingMoney);
