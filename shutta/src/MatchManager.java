@@ -14,6 +14,9 @@ public class MatchManager {
     private Player _winner;
     private Player _looser;
 
+    public void setTie(boolean tie){
+        _tie = tie;
+    }
     public int getCashPrize(){
         return _cashPrize;
     }
@@ -64,14 +67,12 @@ public class MatchManager {
     public void setDoubleCashPrize(){
            _cashPrize *= 2;
            _winner = null;
-           _tie = false;
-        _looser = null;
+            _looser = null;
     }
 
     public void resetCashPrize(int cashPrize){
         _cashPrize = cashPrize;
         _winner = null;
-        _tie = false;
         _looser = null;
     }
 
@@ -92,9 +93,11 @@ public class MatchManager {
         if(firstScore > secondScore) {
             _winner = firstPlayer;
             _looser = secondPlayer;
+            _tie= false;
         }else if(secondScore > firstScore) {
             _winner = secondPlayer;
             _looser = firstPlayer;
+            _tie = false;
         }else {
             _winner = null;
             _looser = null;
@@ -126,6 +129,7 @@ public class MatchManager {
                 case 14: return Jocbo.칠땡;
                 case 16: return Jocbo.팔땡;
                 case 18: return Jocbo.구땡;
+                case 20: return Jocbo.장땡;
             }
         } else {
             // 끗
