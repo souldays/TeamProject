@@ -1,7 +1,6 @@
 import java.util.HashMap;
 
-public class JangMatchInfo implements Matchable {
-
+public class JangMatchInfo implements Matchable {           // 전 판이 무승부일 경우 사용하는 전략 클래스
 
     private  Jocbo[] jocbo;
     private HashMap<Jocbo,Integer> scores;
@@ -11,7 +10,7 @@ public class JangMatchInfo implements Matchable {
         scores = new HashMap<>();
     }
     @Override
-    public HashMap createMatchInfo() {
+    public HashMap createMatchInfo() {                       // 장땡에 가장 큰 점수를 부여하고 나머지는  기존 족보 순서대로 내림차순으로 높은 점수를 부여한다.
         int i = jocbo.length;
         for (Jocbo jocbo : Jocbo.values()) {
             scores.put(jocbo, i--);
